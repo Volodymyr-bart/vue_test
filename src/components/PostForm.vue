@@ -2,17 +2,12 @@
   <div>
     <form class="form" @submit.prevent>
       <h4>New post</h4>
-      <input
-        v-model="post.title"
-        class="input"
-        type="text"
-        placeholder="Name post" />
-      <input
+      <StandartInput v-model="post.title" type="text" placeholder="Name post" />
+      <StandartInput
         v-model="post.body"
-        class="input"
         type="text"
         placeholder="Description" />
-      <button class="button" @click="createPost">Add post</button>
+      <StandartButton @click="createPost">Add post</StandartButton>
     </form>
   </div>
 </template>
@@ -44,16 +39,9 @@ export default {
   flex-direction: column;
   gap: 15px;
 }
-.input {
+/* .input {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-}
-.button {
-  padding: 10px 15px;
-  align-self: flex-end;
-  background-color: none;
-  color: teal;
-  border: 1px solid teal;
-}
+} */
 </style>

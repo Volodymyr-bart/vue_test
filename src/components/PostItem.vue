@@ -5,6 +5,7 @@
       {{ post.title }}
     </div>
     <div>Description:{{ post.body }}</div>
+    <StandartButton>Delete</StandartButton>
   </div>
 </template>
 
@@ -20,8 +21,6 @@ export default {
       required: true,
     },
   },
-
-  components: {},
 
   created() {},
 
@@ -43,6 +42,10 @@ export default {
 
 <style scoped lang="scss">
 .post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   margin-top: 15px;
   padding: 15px;
   border: 2px solid teal;
