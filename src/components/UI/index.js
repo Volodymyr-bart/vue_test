@@ -1,3 +1,4 @@
 import StandartButton from "./StandartButton.vue";
 import StandartInput from "./StandartInput.vue";
-export default [StandartButton, StandartInput];
+import MyDialog from "./MyDialog.vue";
+export default [StandartButton, StandartInput, MyDialog];

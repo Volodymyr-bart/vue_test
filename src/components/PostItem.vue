@@ -5,7 +5,9 @@
       {{ post.title }}
     </div>
     <div>Description:{{ post.body }}</div>
-    <StandartButton>Delete</StandartButton>
+    <StandartButton class="post__btns" @click="$emit('remove', post)"
+      >Delete</StandartButton
+    >
   </div>
 </template>
 
@@ -42,12 +44,14 @@ export default {
 
 <style scoped lang="scss">
 .post {
+  padding: 15px;
+  border: 2px solid teal;
+  margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  margin-top: 15px;
-  padding: 15px;
-  border: 2px solid teal;
+}
+.post__btns {
+  display: flex;
 }
 </style>

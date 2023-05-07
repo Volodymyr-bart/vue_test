@@ -1,7 +1,8 @@
 <template>
   <input
-    v-model="post.title"
     class="input"
+    :value="modelValue"
+    @input="updateInput"
     type="text"
     placeholder="Name post" />
 </template>
@@ -12,7 +13,7 @@ export default {
   data() {
     return {};
   },
-  props: {modelValue},
+  props: { modelValue: [String, Number] },
 
   components: {},
 
@@ -22,7 +23,11 @@ export default {
 
   beforeDestroy() {},
 
-  methods: {},
+  methods: {
+    updateInput(event) {
+      this.$emit("update:modelValue", event.target.value);
+    },
+  },
 
   computed: {},
 
