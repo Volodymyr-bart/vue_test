@@ -1,8 +1,10 @@
+Posts/
 <template>
   <div class="app">
     <h1>Page with posts</h1>
     <div class="app__btns">
       <StandartButton @click="showDialog">Add post</StandartButton>
+      <add-user @add-user="addUser"></add-user>
       <MySelectNew
         :value="selectedSort"
         :options="sortOptions"
@@ -19,10 +21,11 @@
 
 <script>
 // @ is an alias to /src
-import MyDialog from "@/components/UI/MyDialog.vue";
-import PostForm from "./../components/PostForm.vue";
-import PostList from "./../components/PostList.vue";
 import axios from "axios";
+import MyDialog from "@/components/UI/MyDialog.vue";
+import PostForm from "./../components/Posts/PostForm.vue";
+import PostList from "./../components/Posts/PostList.vue";
+import AddUser from "@/components/User/AddUser.vue";
 
 export default {
   name: "HomeView",

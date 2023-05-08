@@ -6,10 +6,19 @@
       class="filter-todos"
       @filter-todos="filterTodos"></filter-todos>
     <ul>
-      <li v-for="todo in filteredTodos" :key="todo.id">
-        {{ todo.title }} -
-        {{ todo.completed ? "Completed" : "Not Completed" }} - User
-        {{ todo.userId }}
+      <li
+        class="todo"
+        v-bind:class="{
+          completed: todo.completed,
+          incomplete: !todo.completed,
+        }"
+        v-for="todo in filteredTodos"
+        :key="todo.id">
+        <div>
+          <h3 class="todo_title">{{ todo.title }}</h3>
+        </div>
+        <div>{{ todo.completed ? "Completed" : "Not Completed" }}</div>
+        <div><strong>Author:</strong> {{ todo.userId }}</div>
       </li>
     </ul>
   </div>
@@ -17,8 +26,8 @@
 
 <script>
 import axios from "axios";
-import AddTodo from "@/components/AddTodo.vue";
-import FilterTodos from "@/components/FilterTodos.vue";
+import AddTodo from "@/components/Todos/AddTodo.vue";
+import FilterTodos from "@/components/Todos/FilterTodos.vue";
 
 export default {
   name: "App",
@@ -78,7 +87,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* стилі для заголовка */
 h1 {
   text-align: center;
@@ -94,30 +103,36 @@ ul {
 }
 
 /* стилі для кожного завдання */
-li {
+.todo {
   margin-bottom: 1rem;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+
+  grid-template-columns: 4fr 1fr 1fr;
+
   align-items: center;
+  text-align: start;
 
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
   background-color: white;
+
+  &_title {
+  }
 }
 
 /* стилі для кожного завдання, яке виконане */
-li.completed {
-  background-color: #c7ecc7;
+.todo.completed {
+  background-color: #a9efa9;
 }
 
 /* стилі для кнопки додавання завдання */
 .add-todo {
   display: flex;
-  justify-content: flex-end;
+
   margin-bottom: 1rem;
 }
 

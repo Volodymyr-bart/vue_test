@@ -1,8 +1,12 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/todo">To do</router-link>
-  </nav>
+  <header>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/todo">To do</router-link>
+      <router-link to="/add-user">Add User</router-link>
+    </nav>
+  </header>
+
   <router-view />
 </template>
 
@@ -14,9 +18,16 @@
   text-align: center;
   color: #2c3e50;
 }
+header {
+  display: flex;
+  justify-content: center;
+}
 
 nav {
   padding: 30px;
+  display: flex;
+  text-align: center;
+  gap: 20px;
 
   a {
     font-weight: bold;
