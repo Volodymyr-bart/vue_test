@@ -1,12 +1,19 @@
 <template>
   <div class="app">
     <h1>Page with posts</h1>
-    <StandartButton @click="fetchPost">Get posts</StandartButton>
-    <StandartButton @click="showDialog">Add post</StandartButton>
+    <div class="app__btns">
+      <StandartButton @click="showDialog">Add post</StandartButton>
+      <MySelectNew
+        :value="selectedSort"
+        :options="sortOptions"
+        @input="selectedSort = $event" />
+      <!-- <MySelect v-model="selectedSort" :options="sortOptions" /> -->
+    </div>
     <MyDialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </MyDialog>
-    <PostList :posts="posts" @remove="removePost" />
+    <PostList :posts="posts" @remove="removePost" v-if="!isPostLoading" />
+    <div v-else>Loading ....</div>
   </div>
 </template>
 
@@ -25,12 +32,14 @@ export default {
   },
   data() {
     return {
-      posts: [
-        // { id: 1, title: "JS", body: "Description posts" },
-        // { id: 2, title: "Html", body: "Description posts" },
-        // { id: 3, title: "Css", body: "Description posts" },
-      ],
+      posts: [],
       dialogVisible: false,
+      isPostLoading: false,
+      selectedSort: "",
+      sortOptions: [
+        { value: "title", name: "For titile" },
+        { value: "body", name: "For body" },
+      ],
     };
   },
   methods: {
@@ -46,20 +55,25 @@ export default {
     },
     async fetchPost() {
       try {
+        this.isPostLoading = true;
         const { data } = await axios.get(
           "https://jsonplaceholder.typicode.com/posts?_limit=10"
         );
         this.posts = data;
       } catch (error) {
         alert("Error");
-        console.log(error.message);
+      } finally {
+        this.isPostLoading = false;
       }
     },
+  },
+  mounted() {
+    this.fetchPost();
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -67,5 +81,11 @@ export default {
 }
 .app {
   padding: 20px;
+
+  &__btns {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 </style>

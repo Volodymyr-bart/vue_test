@@ -39,9 +39,5 @@ export default {
   flex-direction: column;
   gap: 15px;
 }
-/* .input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-} */
+
 </style>
