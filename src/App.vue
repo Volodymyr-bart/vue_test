@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/todo">To do</router-link>
-      <router-link to="/add-user">Add User</router-link>
+      <router-link to="/user-pages">User Page</router-link>
     </nav>
   </header>
 

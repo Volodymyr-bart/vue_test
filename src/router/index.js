@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import AddUser from "./../components/User/AddUser.vue";
+import UserPage from "../views/UserPage.vue";
 
 const routes = [
   {
@@ -18,9 +18,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/ToDo.vue"),
   },
   {
-    path: "/add-user",
-    name: "AddUser",
-    component: AddUser,
+    path: "/user-pages",
+    name: "UserPage",
+    component: UserPage,
   },
 ];
 
