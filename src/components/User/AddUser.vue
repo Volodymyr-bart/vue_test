@@ -36,8 +36,8 @@ export default {
     };
   },
   methods: {
-    submitForm() {      
-      this.user.userId = uuidv4();// Генеруємо новий id      
+    submitForm() {
+      this.user.userId = uuidv4(); // Генеруємо новий id
       this.$emit("user-added", this.user);
       this.user = {
         name: "",
@@ -45,6 +45,7 @@ export default {
         phone: "",
         userId: "",
       };
+     
     },
   },
 };

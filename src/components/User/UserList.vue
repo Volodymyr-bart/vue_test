@@ -13,24 +13,21 @@
 </template>
 
 <script>
+import userService from "../../services/userService";
+
 export default {
   name: "UserList",
-  data() {
-    return {
-      users: [],
-    };
-  },
-  created() {
-    this.loadUsers();
-  },
-  methods: {
-    loadUsers() {
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-      this.users = users;
+  props: {
+    users: {
+      type: Array,
+      required: true,
     },
+  },
+
+  methods: {
     deleteUser(userId) {
       this.$emit("delete-user", userId);
-      this.loadUsers();
+      userService.deleteUser(userId);
     },
   },
 };
